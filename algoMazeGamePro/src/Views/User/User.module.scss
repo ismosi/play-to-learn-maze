@@ -1,0 +1,134 @@
+.profileCenter {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #f0f4f8; // 统一使用Home页面的背景色
+}
+
+.profileContainer {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0984e3; // 添加蓝色边框，呼应Home页面的配色
+}
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.avatarContainer {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    45deg,
+    #0984e3,
+    // 使用Home页面的蓝色
+    #00b894 // 使用Home页面的绿色
+  );
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nickname {
+  font-size: 24px;
+  color: #0984e3; // 使用Home页面的蓝色
+  margin: 0;
+  font-weight: 600;
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+
+.statItem {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    font-size: 16px;
+    color: #666666;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+  }
+
+  .statValue {
+    font-size: 24px;
+    color: #00b894; // 使用Home页面的绿色
+    font-weight: bold;
+  }
+}
+
+.buttonWrapper {
+  margin: 20px;
+  button {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 15px;
+    margin-right: 20px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:first-child {
+      background: #ff7675; // 使用Home页面的红色
+      &:hover {
+        background: #ff8787;
+      }
+    }
+
+    &:last-child {
+      background: #00b894; // 使用Home页面的绿色
+      &:hover {
+        background: #00d6a7;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .statsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .profileContainer {
+    padding: 20px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+}

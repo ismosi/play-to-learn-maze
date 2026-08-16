@@ -1,0 +1,383 @@
+@use "/src/Scss/themes-variable/theme";
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 20px 10px 16px;
+  padding: 0px 15px 0 15px;
+
+  .operation {
+    display: flex;
+    gap: 10px;
+  }
+
+  .execution {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mazeSelector,
+  .pathFinder {
+    width: 125px;
+    border: 1px solid theme.$base;
+    padding: 0 5px;
+  }
+
+  button:disabled {
+    opacity: 0.5;
+  }
+
+  .speed,
+  .play {
+    display: none;
+  }
+
+  .pathInfo {
+    display: none;
+    gap: 10px;
+
+    .highlight {
+      font-weight: 600;
+      min-width: 3ch;
+      display: inline-block;
+    }
+  }
+}
+
+@media (width >= 640px) {
+  .controller {
+    .pathInfo {
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@media (width >= 1024px) {
+  .controller {
+    .speed,
+    .play {
+      display: block;
+    }
+
+    .mazeSelector,
+    .pathFinder {
+      width: auto;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .execution {
+    img {
+      filter: invert(1);
+    }
+  }
+
+  select {
+    background-color: theme.$dark;
+    color: theme.$light;
+  }
+}
+
+.speed {
+  /* 基础样式 */
+  appearance: none;
+  padding: 8px 12px;
+  min-width: 120px;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 12px;
+  color: #333;
+
+  /* 像素风格边框和背景 */
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+
+  /* 像素风格阴影 */
+  box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff, 2px 2px 0 #000;
+
+  /* 下拉箭头 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23000' d='M0 0h8L4 8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px;
+  padding-right: 30px;
+
+  /* 交互效果 */
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff, 2px 2px 0 #000,
+      0 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+  }
+
+  /* 下拉选项样式 */
+  & option {
+    background: #fff;
+    color: #333;
+    padding: 8px;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 12px;
+    border: none;
+
+    &:checked {
+      background: #000;
+      color: #fff;
+    }
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+
+/* 为了确保下拉列表也保持像素风格 */
+select.speed::-ms-expand {
+  display: none;
+}
+
+select.speed::-ms-value {
+  background: transparent;
+  color: #333;
+}
+
+/* 确保在不同浏览器中保持一致的样式 */
+@-moz-document url-prefix() {
+  select.speed {
+    color: #333;
+    text-shadow: none;
+  }
+}
+
+.operation {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  button {
+    appearance: none;
+    padding: 8px 12px;
+    border: 2px solid #000;
+    border-radius: 0;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+
+    /* 像素风格阴影 */
+    box-shadow: inset -2px -2px 0 #333, inset 2px 2px 0 #666, 2px 2px 0 #000;
+
+    /* 图标样式调整 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+      outline: none;
+      box-shadow: inset -2px -2px 0 #333, inset 2px 2px 0 #666, 2px 2px 0 #000,
+        0 0 0 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #666;
+    }
+
+    /* 图标颜色 */
+    svg {
+      color: #fff;
+    }
+  }
+}
+
+.skillWrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.skillButton {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.play {
+    background: linear-gradient(135deg, #4834d4, #686de0);
+  }
+
+  &.frozenSkill {
+    background: linear-gradient(135deg, #00cec9, #81ecec);
+  }
+
+  // 像素风边框效果
+  border-style: solid;
+  border-width: 4px;
+  image-rendering: pixelated;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.8);
+  }
+
+  .skillIcon {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .skillCooldown {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transform-origin: bottom;
+    z-index: 1;
+  }
+}
+
+// 寻踪之眼技能样式
+.play {
+  background: linear-gradient(135deg, #4834d4, #686de0);
+  border-color: #686de0 #4834d4 #4834d4 #686de0;
+  box-shadow: 0 0 10px rgba(104, 109, 224, 0.3);
+
+  svg {
+    color: #fff;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  }
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(104, 109, 224, 0.5);
+  }
+
+  &.cooling {
+    .skillCooldown {
+      animation: cooldown 30s linear;
+    }
+  }
+}
+
+@keyframes cooldown {
+  from {
+    height: 100%;
+    opacity: 0.6;
+  }
+  to {
+    height: 0%;
+    opacity: 0;
+  }
+}
+
+// 寻踪之眼冷却效果
+.play.cooling {
+  .skillCooldown {
+    background: linear-gradient(
+      to top,
+      rgba(72, 52, 212, 0.4),
+      rgba(104, 109, 224, 0.4)
+    );
+  }
+}
+
+// 冰霜冻结冷却效果
+.frozenSkill.cooling {
+  .skillCooldown {
+    background: linear-gradient(
+      to top,
+      rgba(0, 206, 201, 0.4),
+      rgba(129, 236, 236, 0.4)
+    );
+  }
+}
+
+// 冰霜冻结技能样式
+.frozenSkill {
+  background: linear-gradient(135deg, #00cec9, #81ecec);
+  border-color: #81ecec #00cec9 #00cec9 #81ecec;
+  box-shadow: 0 0 10px rgba(0, 206, 201, 0.3);
+
+  svg {
+    color: #fff;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  }
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 206, 201, 0.5);
+  }
+
+  .skillIcon {
+    svg {
+      opacity: 0.5;
+      transition: all 0.3s ease;
+
+      &.active {
+        opacity: 1;
+        animation: pulse 1.5s infinite;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+// 确保 modal icon 在技能按钮之上
+:global(.infoButton) {
+  z-index: 30;
+  pointer-events: auto;
+}

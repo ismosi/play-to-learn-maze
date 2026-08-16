@@ -1,0 +1,48 @@
+.floatingTour {
+  position: fixed;
+  right: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  //   background-color: red;
+  width: 200px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "?";
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Press Start 2P", monospace;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #333;
+    border-radius: 0;
+    box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.2),
+      inset 2px 2px 0 rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover {
+    right: 20px;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}

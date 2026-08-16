@@ -1,0 +1,42 @@
+.title {
+  display: flex;
+  width: calc(100vw - 50px);
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    .titleH1 {
+      margin: 0;
+    }
+    .logo {
+      margin-right: 4px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .user {
+    margin-right: 4px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .title img {
+    filter: invert(1);
+  }
+  .title .titleH1 {
+    filter: invert(1);
+  }
+  .user svg {
+    filter: invert(1);
+  }
+}

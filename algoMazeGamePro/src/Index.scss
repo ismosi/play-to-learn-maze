@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "myFont";
+  src: url("../public/fonts/BestTen-CRT.otf");
+}
+
+:root {
+  font-family: "myFont";
+}
+body {
+  font-family: "myFont" !important;
+}
+
+button {
+  font-family: "myFont" !important;
+}

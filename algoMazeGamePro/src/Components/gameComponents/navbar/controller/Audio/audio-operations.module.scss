@@ -1,0 +1,36 @@
+.audioControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.playButton {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 像素风格阴影 */
+  box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff, 2px 2px 0 #000;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+
+  &:active {
+    box-shadow: inset 2px 2px 0 #808080, inset -2px -2px 0 #fff;
+    transform: translateY(1px);
+  }
+}
+
+/* 隐藏原生音频控件 */
+audio {
+  display: none;
+}

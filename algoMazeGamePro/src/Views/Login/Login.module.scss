@@ -1,0 +1,108 @@
+.container2 {
+  height: 100%;
+  width: 100%;
+  background: #f0f4f8; // 使用首页的背景色
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.loginWrapper {
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 358px;
+  height: 588px;
+  border-radius: 15px;
+  padding: 0 50px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 25%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0984e3; // 添加蓝色边框
+}
+
+.header {
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center; // 改为居中
+  line-height: 200px;
+  margin-left: 0; // 移除负margin
+  background: linear-gradient(45deg, #00b894, #0984e3); // 使用渐变色
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inputItem {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 0;
+  padding: 10px;
+  border-bottom: 2px solid #0984e3; // 使用主题蓝色
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-bottom-color: #00b894; // focus时变为绿色
+  }
+}
+
+.inputItem::placeholder {
+  text-transform: uppercase;
+  color: #a0aec0;
+}
+
+.btn {
+  text-align: center;
+  padding: 12px;
+  width: 100%;
+  margin-top: 40px;
+  background: #00b894; // 使用主题绿色
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+
+  &:hover {
+    background: #00d6a7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2);
+  }
+}
+
+.msg {
+  text-align: center;
+  line-height: 88px;
+  color: #0984e3; // 使用主题蓝色
+}
+
+a {
+  text-decoration-line: none;
+  color: #0984e3; // 使用主题蓝色
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #00b894; // hover时变为绿色
+  }
+}
+
+.switchForm {
+  margin-top: 20px;
+  text-align: center;
+  color: #0984e3; // 使用主题蓝色
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #00b894; // hover时变为绿色
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}

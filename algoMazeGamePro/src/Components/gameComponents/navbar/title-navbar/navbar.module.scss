@@ -1,0 +1,55 @@
+.avatar {
+  width: 30px;
+  height: 30px;
+  margin: 0 0px 0 0;
+  background: linear-gradient(
+    45deg,
+    #0984e3,
+    // 使用Home页面的蓝色
+    #00b894 // 使用Home页面的绿色
+  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modalWrapper {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  top: -15px;
+  margin-left: 2px;
+
+  /* 游戏风格的小角标 */
+  & > div {
+    position: absolute;
+    transform: scale(0.7);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ffcc33;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(0.8);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      background-color: #ffcc33;
+      color: #333;
+    }
+
+    &:active {
+      transform: scale(0.65);
+    }
+  }
+}

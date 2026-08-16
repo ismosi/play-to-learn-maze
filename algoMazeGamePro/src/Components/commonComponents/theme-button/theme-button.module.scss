@@ -1,0 +1,17 @@
+@use "/src/Scss/themes-variable/theme";
+
+.themeButton {
+  border-radius: 50%;
+  border: 1px solid theme.$dark;
+  padding: 5px;
+
+  background-color: theme.$light;
+  opacity: 0.5;
+
+  cursor: pointer;
+
+  svg {
+    height: 25px;
+    width: 25px;
+  }
+}

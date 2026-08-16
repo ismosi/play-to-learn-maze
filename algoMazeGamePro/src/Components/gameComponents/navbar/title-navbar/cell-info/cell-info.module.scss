@@ -1,0 +1,47 @@
+@use "/src/Scss/themes-variable/theme";
+
+.cellInfo {
+  display: none;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-basis: 0;
+  flex-grow: 1;
+  margin-right: 10px;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .item {
+    height: 15px;
+    width: 15px;
+  }
+
+  .entry {
+    background-color: var(--maze-cell-entry);
+  }
+
+  .exit {
+    background-color: var(--maze-cell-exit);
+  }
+
+  .wall {
+    background-color: var(--maze-cell-wall);
+  }
+
+  .visited {
+    background-color: var(--maze-cell-visited);
+  }
+
+  .path {
+    background-color: var(--maze-cell-path);
+  }
+}
+
+@media (width >= 768px) {
+  .cellInfo {
+    display: flex;
+  }
+}

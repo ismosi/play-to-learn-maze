@@ -1,0 +1,461 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #f0f4f8; // 修改为首页背景色
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.leftSection {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  margin-right: 40px;
+}
+
+.rightSection {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.algorithmDescription {
+  flex: 1;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+    padding: 4px;
+    border-radius: inherit;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+.scrollableContent {
+  font-size: 14px;
+  white-space: pre-wrap;
+  height: calc(100% - 40px); /* 减去父元素的padding */
+  position: relative;
+  overflow-y: auto;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  /* 自定义滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  position: relative;
+}
+
+.description {
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 8px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+    padding: 4px;
+    border-radius: inherit;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+.algorithmButtons {
+  font-size: "14px";
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 改为两列
+  gap: 5px; // 增加间距使布局更合理
+
+  button {
+    padding: 5px 5px; // 增加垂直内边距
+    border: none;
+    border-radius: 5px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: #e0e0e0;
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+      color: white;
+    }
+  }
+}
+
+/* 删除重复的 .algorithmDescription 定义 */
+/* 
+.algorithmDescription {
+  flex: 1;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+*/
+
+.rightSection {
+  flex: 1;
+  padding: 20px 20px; // 移除左右内边距
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mapSection,
+.characterSection {
+  .thumbnails {
+    display: flex;
+    justify-content: space-between; // 使元素均匀分布
+    gap: 20px; // 移除间距
+    margin-bottom: 20px;
+  }
+}
+
+.mapSection .description {
+  height: 50px;
+}
+.characterSection .description {
+  height: 130px;
+}
+
+.characters {
+  display: flex;
+  justify-content: left;
+  gap: 50px; // 移除间距
+  margin-bottom: 20px;
+}
+
+.thumbnail {
+  border-radius: 8px;
+  width: 32%;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease; // 修改过渡效果
+  padding: 5px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.02); // 添加缩放效果
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2)); // 添加阴影效果
+  }
+
+  &.selected {
+    transform: scale(1.02); // 选中时保持缩放
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2)); // 选中时保持阴影
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 0.5px;
+      background: linear-gradient(135deg, #468faf, #2d6a4f);
+      border-radius: inherit;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+  }
+}
+
+.character {
+  width: 17%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease; // 修改过渡效果
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.02); // 添加缩放效果
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2)); // 添加阴影效果
+  }
+
+  &.selected {
+    transform: scale(1.02); // 选中时保持缩放
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2)); // 选中时保持阴影
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 0.5px;
+      background: linear-gradient(135deg, #468faf, #2d6a4f);
+      border-radius: inherit;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+  }
+}
+
+.description {
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  min-height: 30px;
+}
+
+.gradient1 {
+  background-image: linear-gradient(
+    135deg,
+    rgba(252, 237, 212, 1),
+    rgba(252, 237, 212, 1)
+  );
+}
+
+.gradient2 {
+  background-image: linear-gradient(
+    135deg,
+    rgba(29, 53, 10, 1),
+    rgba(29, 53, 10, 1)
+  );
+}
+
+.gradient3 {
+  background-image: linear-gradient(
+    135deg,
+    rgba(229, 250, 251, 1),
+    rgba(229, 250, 251, 1)
+  );
+}
+
+.characterGradient1 {
+  background-image: linear-gradient(135deg, #d4fc79, #96e6a1);
+}
+
+.characterGradient2 {
+  background-image: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+.characterGradient3 {
+  background-image: linear-gradient(135deg, #84fab0, #8fd3f4);
+}
+
+.startSection {
+  display: flex;
+  justify-content: center;
+  gap: 20px; // 添加按钮之间的间距
+}
+
+.backButton {
+  padding: 7px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #f0f0f0;
+  color: #666;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    background: #e0e0e0;
+  }
+}
+
+.startButton {
+  padding: 7px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.algorithmDescription {
+  &::before {
+    background: linear-gradient(
+      135deg,
+      #468faf,
+      #2d6a4f
+    ); // 使用冰雪和森林主题的渐变
+  }
+}
+
+.sectionTitle {
+  color: #2d6a4f; // 使用森林主题色
+  font-weight: bold;
+}
+
+.description {
+  &::before {
+    background: linear-gradient(135deg, #e76f51, #f4a261); // 使用沙漠主题渐变
+  }
+}
+
+.algorithmButtons {
+  button {
+    &:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: linear-gradient(
+        135deg,
+        #468faf,
+        #2d6a4f
+      ); // 使用冰雪和森林主题渐变
+    }
+  }
+}
+
+// 场景缩略图背景色
+.gradient1 {
+  background: #fef6e6; // 沙漠主题背景
+}
+
+.gradient2 {
+  background: #e8f4f0; // 森林主题背景
+}
+
+.gradient3 {
+  background: #f0f9ff; // 冰雪主题背景
+}
+
+// 角色选择背景色
+.characterGradient1 {
+  background: linear-gradient(135deg, #40916c, #2d6a4f); // 森林主题
+}
+
+.characterGradient2 {
+  background: linear-gradient(135deg, #a5d8ff, #468faf); // 冰雪主题
+}
+
+.characterGradient3 {
+  background: linear-gradient(135deg, #f4a261, #e76f51); // 沙漠主题
+}
+
+// 选中效果
+.thumbnail,
+.character {
+  &.selected {
+    &::before {
+      background: linear-gradient(
+        135deg,
+        #468faf,
+        #2d6a4f
+      ); // 使用冰雪和森林主题渐变
+    }
+  }
+}
+
+.startButton {
+  background: linear-gradient(
+    135deg,
+    #468faf,
+    #2d6a4f
+  ); // 使用冰雪和森林主题渐变
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(70, 143, 175, 0.3);
+  }
+}
+
+.backButton {
+  background: #f0f4f8;
+  color: #2d6a4f;
+
+  &:hover {
+    background: #e0e0e0;
+    color: #468faf;
+  }
+}
+
+.algorithmDescription {
+  &::before {
+    padding: 0.5px; // 修改边框宽度
+  }
+}
+
+.description {
+  &::before {
+    padding: 0.5px; // 修改边框宽度
+  }
+}
+
+.thumbnail {
+  &.selected {
+    &::before {
+      padding: 0.5px; // 修改边框宽度
+    }
+  }
+}
+
+.character {
+  &.selected {
+    &::before {
+      padding: 0.5px; // 修改边框宽度
+    }
+  }
+}

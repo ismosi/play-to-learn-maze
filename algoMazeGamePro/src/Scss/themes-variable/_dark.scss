@@ -1,0 +1,14 @@
+@use "./colors";
+
+@mixin dark-theme {
+  --light: #{colors.$white};
+  --dark: #{colors.$black};
+
+  --primary: #{colors.$blue1};
+  --base: #{colors.$white};
+  --error: #{colors.$red1};
+
+  --background: #{colors.$black};
+  --shadow1: #{colors.$white1};
+  --shadow2: #{colors.$white2};
+}

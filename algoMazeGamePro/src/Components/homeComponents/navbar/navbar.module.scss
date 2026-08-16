@@ -1,0 +1,15 @@
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #fff;
+  background: linear-gradient(to bottom, #fff, rgba(241, 244, 248, 1));
+}
+
+@media screen and (width >= 960px) {
+  .navbar.navbar {
+    padding: 10px 10px 10px 20px;
+  }
+}

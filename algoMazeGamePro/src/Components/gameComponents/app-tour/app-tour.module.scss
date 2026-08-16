@@ -1,0 +1,89 @@
+@use "/src/Scss/themes-variable/theme";
+
+.tourWrapper {
+  display: none;
+  justify-content: flex-end;
+  flex-grow: 1;
+  flex-basis: 0;
+  position: relative;
+
+  .tour {
+    /* 像素风格边框 */
+    border: 3px solid;
+    border-color: #fff #aaa #aaa #fff;
+    border-radius: 0;
+    padding: 8px 12px;
+
+    /* 渐变背景，使用项目主色调 */
+    background: linear-gradient(135deg, #f1c5e3, #b4c8f0);
+
+    /* 像素风格文字 */
+    color: #333;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+
+    /* 交互效果 */
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.1s ease;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    image-rendering: pixelated;
+
+    /* 像素风格图标 */
+    &::before {
+      content: "?";
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(2px);
+      filter: brightness(0.9);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+      border-color: #aaa #fff #fff #aaa;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+      filter: grayscale(50%);
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* 添加像素风格动画效果 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.tourPulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@media (width >= 1024px) {
+  .tourWrapper {
+    display: flex;
+  }
+}
